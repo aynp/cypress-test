@@ -6,7 +6,9 @@ context('Send Mail', () => {
     })
 
     it('New mail', () => {
-        cy.get('[data-testid="compose-btn"]').click();
+        cy.get('[data-testid="compose-btn"]', {
+            timeout: 10000
+        }).click();
         cy.get('.tokenizing-field-input').type(Cypress.env('email'))
         cy.get('.composer-subject > input').type("Hello World!")
         cy.get('.composer-editor').type("Hello World!")

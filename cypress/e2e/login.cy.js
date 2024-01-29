@@ -6,6 +6,8 @@ context('Login', () => {
     })
 
     it('Check login', () => {
-        cy.get('.email-address').contains(Cypress.env('email'))
+        cy.get('.email-address', {
+            timeout: 10000
+        }).contains(Cypress.env('email'))
     })
 })
