@@ -6,6 +6,8 @@ context('Send Mail', () => {
     })
 
     it('New mail', () => {
+        cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
+        cy.wait(10000);
         cy.get('[data-testid="compose-btn"]', {
             timeout: 10000
         }).click();

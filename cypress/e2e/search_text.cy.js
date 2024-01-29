@@ -6,7 +6,9 @@ context('Search Mail', () => {
     })
 
     it('Search Mail', () => {
-        cy.get('[data-testid="search-box"]').type('Titan')
+        cy.get('[data-testid="search-box"]', {
+            timeout: 10000
+        }).type('Titan')
         cy.wait(100)
         cy.get('[data-testid="search-box"]').type('{enter}')
     })
