@@ -1,14 +1,14 @@
 describe('Mark Email Starred', () => {
 
     before('Login', () => {
-        cy.login('sachinp@titan.email', '')
+        cy.login(Cypress.env('email'), Cypress.env('password'))
     })
 
     it('Mark Starred', () => {
         cy.wait(3000)
 
         // select mail to star
-        cy.get('[class="list-rows pendo-Inbox-list"]').then( mails => {
+        cy.get('[class="list-rows pendo-Inbox-list"]').then(mails => {
             cy.wrap(mails).find('div').eq(0).as('selectedEmail')
             cy.get('@selectedEmail').invoke('attr', 'data-item-id').as('mailId')
             cy.get('@selectedEmail').click()
@@ -16,7 +16,7 @@ describe('Mark Email Starred', () => {
 
         // click star button
         cy.get('[data-testid="thread-toggle-star-btn"]').as('starButton')
-        cy.get('@starButton', {timeout : 5000}).should('not.have.css', 'pointer-events', 'none')
+        cy.get('@starButton', { timeout: 5000 }).should('not.have.css', 'pointer-events', 'none')
         cy.get('@starButton').click()
 
         // let mailId = markStarredHelper.markStarred()
@@ -27,7 +27,7 @@ describe('Mark Email Starred', () => {
         cy.get('[class="dropdown-options-container open-towards-bottom"]').find('div').eq(2).click()
 
         // click on the first email option and match it's id
-        cy.get('[data-item-id]', { timeout : 5000 }).as('dataItemId')
+        cy.get('[data-item-id]', { timeout: 5000 }).as('dataItemId')
         cy.get('@dataItemId').eq(0).invoke('attr', 'data-item-id').as('currentMailId')
         cy.get('@currentMailId').should('contain', '@mailId')
 

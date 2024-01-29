@@ -6,7 +6,9 @@ context('Get Starred', () => {
     })
 
     it('Get Starred', () => {
-        cy.get('.selected-option').click();
+        cy.get('.selected-option', {
+            timeout: 10000
+        }).click();
         cy.get('.dropdown-options-container > :nth-child(3)').click();
 
         cy.get('.selected-option').contains('Starred')
