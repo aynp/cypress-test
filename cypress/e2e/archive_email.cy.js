@@ -1,11 +1,7 @@
-const { loginPageHelper } = require("../support/LoginPage/LoginPageHelper")
-
 describe('Archive Mail', () => {
 
     before('Login', () => {
-        cy.viewport(1080, 720);
-        cy.openAppHomePage()
-        loginPageHelper.processLogin('sachinp@titan.email', '')
+        cy.login(Cypress.env('email'), Cypress.env('password'))
     })
 
     it('Archive', () => {
