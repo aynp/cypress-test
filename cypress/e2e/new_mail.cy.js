@@ -21,4 +21,8 @@ context('Send Mail', () => {
             timeout: 10000
         }).contains('Message sent!');
     })
+
+    afterEach('Logout', () => {
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
+    })
 })
