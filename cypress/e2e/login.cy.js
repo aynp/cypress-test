@@ -10,4 +10,8 @@ context('Login', () => {
             timeout: 10000
         }).contains(Cypress.env('email'))
     })
+
+    afterEach('Logout', () => {
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
+    })
 })

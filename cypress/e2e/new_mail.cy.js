@@ -7,6 +7,7 @@ context('Send Mail', () => {
 
     it('New mail', () => {
         cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
+        cy.wait(3000);
         cy.get('[data-testid="compose-btn"]', {
             timeout: 20000
         }).click();
@@ -14,6 +15,14 @@ context('Send Mail', () => {
         cy.get('.composer-subject > input').type("Hello World!")
         cy.get('.composer-editor').type("Hello World!")
 
-        // cy.get('.btn-send').click();
+        cy.get('.btn-send').click();
+
+        cy.get('.undo-message-wrapper', {
+            timeout: 10000
+        }).contains('Message sent!');
+    })
+
+    afterEach('Logout', () => {
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
     })
 })
