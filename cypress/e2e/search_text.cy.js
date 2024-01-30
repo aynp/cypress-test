@@ -12,4 +12,8 @@ context('Search Mail', () => {
         cy.wait(100)
         cy.get('[data-testid="search-box"]').type('{enter}')
     })
+
+    afterEach('Logout', () => {
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
+    })
 })

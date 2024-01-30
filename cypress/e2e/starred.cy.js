@@ -13,4 +13,8 @@ context('Get Starred', () => {
 
         cy.get('.selected-option').contains('Starred')
     })
+
+    afterEach('Logout', () => {
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
+    })
 })
