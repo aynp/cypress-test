@@ -1,17 +1,17 @@
-/// <reference types="Cypress" />
+import { homePage } from './pages/HomePage'
+import { loginPage } from './pages/LoginPage'
 
 context('Login', () => {
-    beforeEach(() => {
-        cy.login(Cypress.env('email'), Cypress.env('password'))
+
+    before('Visit login page', () => {
+        cy.visit('https://app.titan.email')
     })
 
     it('Check login', () => {
-        cy.get('.email-address', {
-            timeout: 10000
-        }).contains(Cypress.env('email'))
+        loginPage.pageElements.emailInput().type(Cypress.env('email'))
+        loginPage.pageElements.passwordInput().type(Cypress.env('password'))
+        loginPage.pageElements.loginButton().click()    
+        homePage.pageElements.logedInEmail().contains(Cypress.env('email'))
     })
 
-    afterEach('Logout', () => {
-        cy.logout(Cypress.env('email'), Cypress.env('password'))
-    })
 })
