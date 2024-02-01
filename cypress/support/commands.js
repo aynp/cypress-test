@@ -1,6 +1,7 @@
 Cypress.Commands.add('login', (email, password) => {
-    cy.get('[data-testid="email-input"]').type(email)
-    cy.get('[data-testid="password-input"]').type(password)
+    cy.visit('https://app.titan.email')
+    cy.get('[data-testid="email-input"]').type(Cypress.env('email'))
+    cy.get('[data-testid="password-input"]').type(Cypress.env('password'))
     cy.get('[data-testid="login-button"]').click()
 })
 
