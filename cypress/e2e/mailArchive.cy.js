@@ -18,7 +18,7 @@ describe('Mail Archive Test', () => {
         })  
         homePage.pageElements.firstInboxMail().click()
         homePage.pageElements.threadArchiveButton().click()
-       
+
         // Validate toast message on clicking Archive button
         homePage.pageElements.archiveToast().should('have.text', archiveToastMessage)
 
@@ -28,7 +28,5 @@ describe('Mail Archive Test', () => {
             expect(interception.response.statusCode).to.equal(200)
             expect(archivedThreadId).to.equal(JSON.parse(interception.request.body.reqs[0].p).ttxn[0].tid)
         })
-
     })
-
 })
