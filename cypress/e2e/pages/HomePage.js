@@ -5,6 +5,7 @@ export class HomePage {
         darkModeButton : () => cy.get('[data-testid="enable_disable_darkmode"]'),
         logedInEmail : () =>  cy.get('.email-address'),
         allMailsList : () => cy.get('[data-item-id]'),
+        firstInboxMail : () => cy.get('[class="list-rows pendo-Inbox-list"] > :nth-child(1)'),
         threadArchiveButton : () => cy.get('.thread-toolbar-button-outer[data-idx="0"]'),
         archiveSection : () => cy.get('#7'),
         archiveToast : () => cy.get('.undo-message-wrapper'),

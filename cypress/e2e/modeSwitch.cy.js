@@ -14,7 +14,7 @@ describe('Enable Dark Mode Test', () => {
 
         // Click on Setting Button, Check if the New Mode is different from the previous
         homePage.pageElements.settingButton().click()
-        homePage.pageElements.darkModeButton().invoke('attr', 'class').as('newModeState').should('not.contain', 'previousModeState')
+        homePage.pageElements.darkModeButton().invoke('attr', 'class').as('newModeState').should('not.contain', '@previousModeState')
         
         // Change the Mode again, Recheck the change of mode
         homePage.pageElements.darkModeButton().click()
