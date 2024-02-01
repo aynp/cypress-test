@@ -20,22 +20,20 @@ describe('Mail Archive Test', () => {
         homePage.pageElements.allMailsList().eq(0).as('selectedEmail')
         cy.get('@selectedEmail').invoke('attr', attrContainingMailId).then(($threadId) => {
             archivedThreadId = $threadId
-        })  
-        cy.get('@selectedEmail').click()        
+        })
+        cy.get('@selectedEmail').click()
         homePage.pageElements.threadArchiveButton().click()
-       
+
         // Validate toast message on clicking Archive button
         homePage.pageElements.archiveToast().should('have.text', archiveToastMessage)
 
         // Intercept the Queue request and validate request and response
         cy.intercept('POST', archiveAPIUrl).as('archiveMailQueueRequest')
-        cy.wait('@archiveMailQueueRequest', {requestTimeout : 60000, resposeTimeout : 60000}).then( (interception) => {
+        cy.wait('@archiveMailQueueRequest').then((interception) => {
             expect(interception.response.statusCode).to.equal(200)
 
             const requestThreadId = JSON.parse(interception.request.body.reqs[0].p).ttxn[0].tid
             expect(archivedThreadId).to.equal(requestThreadId)
         })
-
     })
-
 })
