@@ -24,7 +24,7 @@ describe('Mail Archive Test', () => {
 
         // Intercept the Queue request and validate request and response
         cy.intercept('POST', archiveAPIUrl).as('archiveMailQueueRequest')
-        cy.wait('@archiveMailQueueRequest', {requestTimeout : 60000, responseTimeout : 60000}).then((interception) => {
+        cy.wait('@archiveMailQueueRequest').then((interception) => {
             expect(interception.response.statusCode).to.equal(200)
             expect(archivedThreadId).to.equal(JSON.parse(interception.request.body.reqs[0].p).ttxn[0].tid)
         })
