@@ -10,6 +10,11 @@ export class HomePage {
         archiveSection : () => cy.get('#7'),
         archiveToast : () => cy.get('.undo-message-wrapper'),
         moreFolderButton : (config) => cy.get('.more-less-container is-collapsed add-account-sticky', config),
+        searchPopupButton : () => cy.get('[class="btn btn-naked-secondary filter-toggle-btn"]'),
+        mailSearchBar : () => cy.get('[data-testid="search-box"]'),
+        bulkSelectCheckBox : () => cy.get('[class="checkbox-wrapper bulk-select unselected"]'),
+        bulkSelectionCountElement : () => cy.get('.bulk-selection-stack >.selection-count'),
+        emptyMailListIndicator : () => cy.get('[class="perspective-empty-state"]'),
         messageItemArea : () => cy.get('[class="message-item-area"]')  
     }
 
