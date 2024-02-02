@@ -20,7 +20,7 @@ describe('Search Mail Test', () => {
         cy.login()
     })
 
-    it('Search Inbox by Sender', () => {
+    it('Search', () => {
         for(const fromValue of parameters.from) {
             for(const toValue of parameters.to) {
                 for(const inValue of parameters.in) {
