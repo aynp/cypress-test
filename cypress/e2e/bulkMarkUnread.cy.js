@@ -30,13 +30,11 @@ describe('Bulk Mark Unread', () => {
 
         cy.intercept('POST', markUnreadAPI).as('markUnreadAPI')
         cy.wait('@markUnreadAPI').then((interception) => {
-            const threadsSentList = JSON.parse(interception.request.body.reqs[0].p).ttxn
             const threadIdsList = []
-            for(const thread of threadsSentList) {
+            for(const thread of JSON.parse(interception.request.body.reqs[0].p).ttxn) {
                 threadIdsList.push(thread.tid)
             }
-            const areMatching = (JSON.stringify(threadIdsList) == JSON.stringify(selectedMailsThreadIds))
-            expect(areMatching).to.equal(true)
+            expect(JSON.stringify(threadIdsList) == JSON.stringify(selectedMailsThreadIds)).to.equal(true)
         })
     })
 
