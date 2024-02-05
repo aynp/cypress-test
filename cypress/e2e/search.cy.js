@@ -6,8 +6,8 @@ const constants = {
 }
 
 const parameters = {
-    from: ['', 'sachinp@titan.email'],
-    to: ['', 'sachinp@titan.email'],
+    from: ['', Cypress.env('fromEmail')],
+    to: ['', Cypress.env('toEmail')],
     in: ['', 'Inbox', 'Archive', 'Spam'],
     is: ['', 'Unread', 'Starred']
 }
@@ -48,7 +48,7 @@ describe('Search Mail Test', () => {
                 homePage.pageElements.emptyMailListIndicator().should('exist')
             }
             else {
-                homePage.pageElements.bulkSelectCheckBox().click()
+                homePage.pageElements.bulkSelectCheckBoxUnselected().click()
                 homePage.pageElements.bulkSelectionCountElement().then(($text) => {
                     const mailsCount = parseInt($text.text().match(constants.getMailCountRegex)[0], 10)
                     expect(mailsCount).to.equal(totalMailsReceived)
@@ -67,4 +67,7 @@ describe('Search Mail Test', () => {
         return 'from:"' + fromValue + '"to:"' + toValue + '"in:"' + inValue + '"is:"' + isValue + '" {enter}'
     }
 
+    after('Logout', () => {
+        cy.logout()
+    })
 })

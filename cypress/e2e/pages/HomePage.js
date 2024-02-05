@@ -12,7 +12,9 @@ export class HomePage {
         moreFolderButton : (config) => cy.get('.more-less-container is-collapsed add-account-sticky', config),
         searchPopupButton : () => cy.get('[class="btn btn-naked-secondary filter-toggle-btn"]'),
         mailSearchBar : () => cy.get('[data-testid="search-box"]'),
-        bulkSelectCheckBox : () => cy.get('[class="checkbox-wrapper bulk-select unselected"]'),
+        bulkSelectCheckBoxUnselected : () => cy.get('[class="checkbox-wrapper bulk-select unselected"]'),
+        bulkSelectCheckBoxSelected : () => cy.get('[class="checkbox-wrapper bulk-select selected"]'),
+        bulkSelectCheckBoxDisabled : () => cy.get('[class="checkbox-wrapper bulk-select disabled"]'),
         bulkSelectionCountElement : () => cy.get('.bulk-selection-stack >.selection-count'),
         emptyMailListIndicator : () => cy.get('[class="perspective-empty-state"]'),
         messageItemArea : () => cy.get('[class="message-item-area"]')  
