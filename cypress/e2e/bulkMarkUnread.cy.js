@@ -26,6 +26,14 @@ describe('Bulk Mark Unread', () => {
                 homePage.pageElements.bulkReadUnreadButton().click()
             }
         })
+        // Wait for the Counter to get updated
+        cy.wait(3000)
+        let unreadMailCount
+        homePage.pageElements.unreadCounter().invoke('text').then(($unreadCount) => {
+            unreadMailCount = $unreadCount
+            cy.log("initial : " + unreadMailCount)
+        })
+
         homePage.pageElements.bulkReadUnreadButton().click()
 
         cy.intercept('POST', markUnreadAPI).as('markUnreadAPI')
@@ -36,6 +44,12 @@ describe('Bulk Mark Unread', () => {
             }
             expect(JSON.stringify(threadIdsList) == JSON.stringify(selectedMailsThreadIds)).to.equal(true)
         })
+
+        // Check the new Unread Counter
+        homePage.pageElements.unreadCounter().invoke('text').then(($newUnreadCount) => {
+            expect(Number(unreadMailCount) + Number(selectCount)).to.equal(Number($newUnreadCount))
+        })
+        
     })
 
     after('Logout', () => {

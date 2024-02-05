@@ -20,7 +20,8 @@ export class HomePage {
         bulkSelectCheckBoxDisabled : () => cy.get('[class="checkbox-wrapper bulk-select disabled"]'),
         bulkSelectionCountElement : () => cy.get('.bulk-selection-stack >.selection-count'),
         emptyMailListIndicator : () => cy.get('[class="perspective-empty-state"]'),
-        messageItemArea : () => cy.get('[class="message-item-area"]')  
+        messageItemArea : () => cy.get('[class="message-item-area"]'),
+        unreadCounter : () => cy.get('[class="item-count-box"]')
     }
 
 }
