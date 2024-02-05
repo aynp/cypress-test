@@ -6,9 +6,9 @@ const constants = {
 }
 
 const parameters = {
-   fromInboxQuery: 'from:"' + Cypress.env('fromEmail') + '" in:"Inbox" {enter}',
-   toInboxQuery: 'to:"' + Cypress.env('toEmail') + '" in:"Inbox" {enter}',
-   fromInboxStarredQuery: 'to:"' + Cypress.env('toEmail') + '" in:"Spam" {enter}'
+   fromInboxQuery: `from:"${Cypress.env('fromEmail')}" in:"Inbox" {enter}`,
+   toInboxQuery: `to:"${Cypress.env('toEmail')}" in:"Inbox" {enter}`,
+   fromInboxStarredQuery: `to:"${Cypress.env('toEmail')}" in:"Spam" {enter}`
 }
      
 describe('Search Mail Test', () => {

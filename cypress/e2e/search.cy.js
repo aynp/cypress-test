@@ -64,7 +64,7 @@ describe('Search Mail Test', () => {
     }
 
     function formSearchQuery(fromValue, toValue, inValue, isValue) {
-        return 'from:"' + fromValue + '"to:"' + toValue + '"in:"' + inValue + '"is:"' + isValue + '" {enter}'
+        return `from:"${fromValue}" to:"${toValue}" in:"${inValue}" is:"${isValue}" {enter}`
     }
 
     after('Logout', () => {
