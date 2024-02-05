@@ -2,8 +2,7 @@ import { homePage } from "./pages/HomePage"
 
 describe('Enable Dark Mode Test', () => {
     before('Login', () => {
-        cy.visit('https://app.titan.email')
-        cy.login(Cypress.env('email'), Cypress.env('password'))
+        cy.login()
     })
 
     it('Enable Dark Mode', () => {
