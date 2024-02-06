@@ -28,7 +28,9 @@ export class HomePage {
         addAccountEmailInput : () => cy.get('[data-testid="email-input"]'),
         addAccountPasswordInput : () => cy.get('[data-testid="password-input"'),
         addAccountLoginButton : () => cy.get('[data-testid="login-button"]'),
-        addPasswordRecoveryEmailCloseButton : () => cy.get('[data-testid="modal-close-btn"]')
+        addPasswordRecoveryEmailCloseButton : () => cy.get('[data-testid="modal-close-btn"]'),
+        openInboxButton : () => cy.get('#6'),
+        firstMailSubject : () => cy.get('[class="thread-info-column"] > [class="subject"] > [class="text"]').first()
     }
 
 }
