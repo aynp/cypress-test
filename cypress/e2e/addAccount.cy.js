@@ -3,7 +3,7 @@ import { composePage } from "./pages/ComposePage"
 
 const constants = {
     mailBody:'This is a testing email body !',
-    sendAPI: '**/send',
+    sendMailToastMessage: 'Message sent!'
 }
 
 describe('Add Account Test', () => {
@@ -32,7 +32,7 @@ describe('Add Account Test', () => {
         composePage.pageElements.subjectInput().type(constants.currentTimeMillis)
         composePage.pageElements.editorInput().type(constants.mailBody)
         composePage.pageElements.sendMail().click();
-        composePage.pageElements.sentToast().should('contain.text', 'Message sent!')
+        composePage.pageElements.sentToast().should('contain.text', constants.sendMailToastMessage)
 
         // Checking if the mail is recieved
         homePage.pageElements.openInboxButton().first().click()
