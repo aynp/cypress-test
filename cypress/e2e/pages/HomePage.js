@@ -21,7 +21,7 @@ export class HomePage {
         bulkSelectionCountElement : () => cy.get('.bulk-selection-stack >.selection-count'),
         emptyMailListIndicator : () => cy.get('[class="perspective-empty-state"]'),
         messageItemArea : () => cy.get('[class="message-item-area"]'),
-        unreadCounter : () => cy.get('[class="item-count-box"]')
+        inboxUnreadCounter : () => cy.get('#6 > [class="item-count-box"]')
     }
 
 }

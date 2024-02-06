@@ -23,6 +23,7 @@ describe('Bulk Mark Unread', () => {
         homePage.pageElements.mailSelectCheckbox(selectCount).each(($mail) => {
             cy.wrap($mail).click()
         })
+
         // If the Button is 'Mark Read'
         homePage.pageElements.bulkReadUnreadButton().invoke('attr', 'class').then(($buttonClass) => {
             if($buttonClass == readButtonClass) {
@@ -34,7 +35,7 @@ describe('Bulk Mark Unread', () => {
 
         // Store the Unread Counter 
         let unreadMailCount
-        homePage.pageElements.unreadCounter().invoke('text').then(($unreadCount) => {
+        homePage.pageElements.inboxUnreadCounter().invoke('text').then(($unreadCount) => {
             unreadMailCount = $unreadCount
         })
 
@@ -51,7 +52,7 @@ describe('Bulk Mark Unread', () => {
         })
 
         // Check the new Unread Counter
-        homePage.pageElements.unreadCounter().invoke('text').then(($newUnreadCount) => {
+        homePage.pageElements.inboxUnreadCounter().invoke('text').then(($newUnreadCount) => {
             expect(Number(unreadMailCount) + Number(selectCount)).to.equal(Number($newUnreadCount))
         })  
     })
