@@ -21,7 +21,13 @@ export class HomePage {
         bulkSelectionCountElement : () => cy.get('.bulk-selection-stack >.selection-count'),
         emptyMailListIndicator : () => cy.get('[class="perspective-empty-state"]'),
         messageItemArea : () => cy.get('[class="message-item-area"]'),
-        inboxUnreadCounter : () => cy.get('#6 > [class="item-count-box"]')
+        inboxUnreadCounter : () => cy.get('#6 > [class="item-count-box"]'),
+        userEmailHolder : () => cy.get('.email-address-and-unread-counter'),
+        addAccountButton : () => cy.get('[data-testid="sidebar-add-account"]'),
+        addAccountEmailInput : () => cy.get('[data-testid="email-input"]'),
+        addAccountPasswordInput : () => cy.get('[data-testid="password-input"'),
+        addAccountLoginButton : () => cy.get('[data-testid="login-button"]'),
+        addPasswordRecoveryEmailCloseButton : () => cy.get('[data-testid="modal-close-btn"]')
     }
 
 }
