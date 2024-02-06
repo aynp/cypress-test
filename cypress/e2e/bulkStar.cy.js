@@ -36,6 +36,8 @@ context('Bulk Operations', () => {
         // star all emails
         homePage.pageElements.starToggleButton().click();
 
+        homePage.pageElements.toast().should('contain.text', `${selectCount} conversations starred`)
+
         cy.intercept('POST', starApiUrl).as('starApiUrl')
         cy.wait('@starApiUrl').then((interception) => {
             const threadsSentList = JSON.parse(interception.request.body.reqs[0].p).ttxn
