@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { composePage } from "./pages/ComposePage"
+import { homePage } from "./pages/HomePage"
 
 context('Keyboard Shortcuts', () => {
     beforeEach(() => {
@@ -18,7 +19,7 @@ context('Keyboard Shortcuts', () => {
 
     it('New Message', () => {
         // check for c
-        composePage.pageElements.body().type('c');
+        homePage.pageElements.body().type('c');
         composePage.pageElements.flyout().contains('New Mail');
         composePage.pageElements.closeFlyout().click();
 
@@ -33,8 +34,13 @@ context('Keyboard Shortcuts', () => {
         composePage.pageElements.closeFlyout().click();
     })
 
+    it('Search', () => {
+        homePage.pageElements.body().type('/');
+        homePage.pageElements.mailSearchBar().should('be.focused');
+    })
+
     afterEach(() => {
         // logout
-        // cy.logout(Cypress.env('email'), Cypress.env('password'))
+        cy.logout(Cypress.env('email'), Cypress.env('password'))
     })
 })
