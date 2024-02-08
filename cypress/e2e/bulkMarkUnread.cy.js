@@ -48,7 +48,7 @@ describe('Bulk Mark Unread', () => {
             for(const thread of JSON.parse(interception.request.body.reqs[0].p).ttxn) {
                 threadIdsList.push(thread.tid)
             }
-            expect(JSON.stringify(threadIdsList) == JSON.stringify(selectedMailsThreadIds)).to.equal(true)
+            expect(JSON.stringify(threadIdsList)).to.equal(JSON.stringify(selectedMailsThreadIds))
         })
 
         // Check the new Unread Counter
