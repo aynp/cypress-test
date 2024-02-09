@@ -35,6 +35,13 @@ export class HomePage {
         firstMailSubject: () => cy.get('[class="thread-info-column"] > [class="subject"] > [class="text"]').first(),
         modal: () => cy.get('.title'),
         modalCloseButton: () => cy.get('[data-testid="modal-close-btn"]'),
+        mailPrimaryItemButton: () => cy.get('[class="primary-item"]'),
+        senderEmail: () => cy.get('[class="participant-name From-contact"] > div > div > span'),
+        replySendButton: () => cy.get('[class="btn btn-primary btn-send"]'),
+        sentToast: () => cy.get('.undo-message-wrapper'),
+        recipientToggleButton: () => cy.get('[class="header-toggle-control inactive"]'),
+        mailMoreOptions: () => cy.get('[class="secondary-picker"]'),
+        moreOptionsReplyButton: () => cy.get('[class="token-item-container"] > [class="item selected"]')
     }
 
 }
