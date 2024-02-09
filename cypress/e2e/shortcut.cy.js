@@ -35,8 +35,18 @@ context('Keyboard Shortcuts', () => {
     })
 
     it('Search', () => {
+        // check if / focuses the search bar
         homePage.pageElements.body().type('/');
         homePage.pageElements.mailSearchBar().should('be.focused');
+    })
+
+    it('Shortcuts list', () => {
+        // check if ? opens Keyboard shortcut modal
+        homePage.pageElements.body().type('?');
+        homePage.pageElements.modal().contains('Keyboard shortcuts')
+
+        // close the model to logout
+        homePage.pageElements.modalCloseButton().click()
     })
 
     afterEach(() => {

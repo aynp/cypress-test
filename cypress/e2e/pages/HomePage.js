@@ -32,7 +32,9 @@ export class HomePage {
         addPasswordRecoveryEmailCloseButton: () => cy.get('[data-testid="modal-close-btn"]'),
         toast: () => cy.get('[data-testid="toast"]'),
         openInboxButton: () => cy.get('#6'),
-        firstMailSubject: () => cy.get('[class="thread-info-column"] > [class="subject"] > [class="text"]').first()
+        firstMailSubject: () => cy.get('[class="thread-info-column"] > [class="subject"] > [class="text"]').first(),
+        modal: () => cy.get('.title'),
+        modalCloseButton: () => cy.get('[data-testid="modal-close-btn"]'),
     }
 
 }
